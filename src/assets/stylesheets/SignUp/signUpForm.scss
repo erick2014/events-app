@@ -1,0 +1,77 @@
+
+$imgPath:'/public/images/starWars.png';
+
+.sign-up-form {
+  &__left-column{
+    background-image: url($imgPath)
+  }
+
+  &__left-column-bg-gray{
+    width: 100%;
+    min-height: 777px;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+
+  &__left-column-text{
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 22px;
+    &--green{
+      color:$green;
+    }
+  }
+
+  &__right-column{
+    display: flex;
+    justify-content: center;
+    &>div{
+      width: 100%;
+    }
+  }
+
+  &__right-column-fill-in-text{
+    padding-top: 10px;
+    color: $gray-text;
+    &--red{
+      padding-top: 10px;
+      color: $red;
+    }
+  }
+
+  &__right-column-signin-text{
+    text-align: right;
+    padding-right: 20px;
+
+    a {
+      font-size: 14px;
+      color: $gray-test2;
+    }
+  }
+
+  &__right-column-form-fields{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+  }
+
+  &__right-column-title{
+    h1{
+      font-size: 28px;
+      margin: 0;
+    }
+  }
+
+  &__right-column-input{
+    width: 480px;
+  }
+
+  &__right-column-submit-btn {
+    margin: 20px 0;
+  }
+}
+

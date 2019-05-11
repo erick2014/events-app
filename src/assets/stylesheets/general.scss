@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+$font-size : 5rem;
+$merriweather: "Merriweather",sans-serif;
+
+body {
+  font-family: $merriweather;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+.custom-box-shadow {
+  box-shadow: 0 3px 3px 0px rgba(#000, 0.1);
+}

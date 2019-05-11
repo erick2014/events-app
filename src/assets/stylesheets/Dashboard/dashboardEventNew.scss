@@ -1,0 +1,51 @@
+.dasboard-event-new {
+  background-color: $light-gray;
+
+  &__container {
+    min-height: 721px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__top-bar{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+  }
+
+  &__top-bar-text {
+    padding: 4px;
+  }
+
+  &__top-bar-icon{
+    cursor: pointer;
+  }
+
+  &__form {
+    min-width: 416px;
+    background-color: $white;
+    padding: 30px;
+  }
+
+  &__form-title {
+    text-align: center;
+    h1{
+      font-size: 28px;
+    }
+  }
+
+  &__feedback-text {
+    color: $gray-text;
+    &--red{
+      color: $red;
+    }
+  }
+
+  &__submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}

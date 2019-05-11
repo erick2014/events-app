@@ -1,0 +1,49 @@
+
+.dashboard-event {
+  padding: 30px;
+  background-color: white;
+  font-size: 18px;
+
+  &__time {
+    color:#CACDD0;
+    font-size: 14px;
+  }
+
+  &__title {
+    margin-top:20px;
+    font-weight: 500;
+    color:#323C46;
+    font-size:22px;
+  }
+
+  &__sub-title{
+    margin-top: 15px;
+    font-size: 16px;
+    color:#7D7878;
+    font-size: 14px;
+  }
+
+  &__description {
+    font-size: 16px;
+    color:#949EA8;
+    margin-top: 40px;
+  }
+
+  &__footer {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__footer-counter {
+    flex-basis: 70%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__footer-btn {
+    flex-basis: 30%;
+  }
+
+}
