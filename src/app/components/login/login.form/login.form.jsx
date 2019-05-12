@@ -30,37 +30,30 @@ const styles = theme => ({
 })
 
 class LoginForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      email: '',
-      password: '',
-      showPassword: false
-    }
-    this.onClickSubmitBtn = this.onClickSubmitBtn.bind(this)
-    this.buildFillingText = this.buildFillingText.bind(this)
-    this.handleClickShowPasssword = this.handleClickShowPasssword.bind(this)
-    this.buildPageContent = this.buildPageContent.bind(this)
+  state = {
+    email: '',
+    password: '',
+    showPassword: false
   }
 
-  handleClickShowPasssword() {
+  handleClickShowPasssword = () => {
     this.setState({ showPassword: !this.state.showPassword })
   }
 
-  handleMouseDownPassword(event) {
+  handleMouseDownPassword=(event)=> {
     event.preventDefault()
   };
 
-  handleChange(inputName, event) {
+  handleChange=(inputName, event)=> {
     this.setState({ [inputName]: event.target.value })
   }
 
-  onClickSubmitBtn() {
+  onClickSubmitBtn=()=> {
     const { login } = this.props
     login({ 'email': this.state.email, 'password': this.state.password })
   }
 
-  buildFillingText() {
+  buildFillingText=()=> {
     const { users: { error, errorMessage } } = this.props
     let componentToRender
     if (!error) {
@@ -71,7 +64,7 @@ class LoginForm extends Component {
     return componentToRender
   }
 
-  setSessionInLocalStorage(user) {
+  setSessionInLocalStorage=(user)=> {
     const userInfoAsString = JSON.stringify(user)
     window.localStorage.setItem('eventioSession', userInfoAsString)
   }
