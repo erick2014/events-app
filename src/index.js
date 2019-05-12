@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import { getHistory, getStore } from './redux'
+import { getHistory, getStore } from 'reduxConfig/store'
 import Routing from './routing'
 
 // import general styles

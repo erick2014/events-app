@@ -5,8 +5,8 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 
 // reducers
-import usersReducer from 'reduxConfig/reducers/users'
-import eventsReducer from 'reduxConfig/reducers/events'
+import usersReducer from './reducers/users'
+import eventsReducer from './reducers/events'
 
 const mainReducer = combineReducers({
   users: usersReducer,
