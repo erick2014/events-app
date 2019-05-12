@@ -13,6 +13,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 // components
 import CustomButton from 'components/custom.button/custom.button'
+
 // start wars img
 import startWars from 'images/starWars.png'
 
@@ -40,20 +41,20 @@ class LoginForm extends Component {
     this.setState({ showPassword: !this.state.showPassword })
   }
 
-  handleMouseDownPassword=(event)=> {
+  handleMouseDownPassword = (event) => {
     event.preventDefault()
   };
 
-  handleChange=(inputName, event)=> {
+  handleChange = (inputName, event) => {
     this.setState({ [inputName]: event.target.value })
   }
 
-  onClickSubmitBtn=()=> {
+  onClickSubmitBtn = () => {
     const { login } = this.props
     login({ 'email': this.state.email, 'password': this.state.password })
   }
 
-  buildFillingText=()=> {
+  buildFillingText = () => {
     const { users: { error, errorMessage } } = this.props
     let componentToRender
     if (!error) {
@@ -64,7 +65,7 @@ class LoginForm extends Component {
     return componentToRender
   }
 
-  setSessionInLocalStorage=(user)=> {
+  setSessionInLocalStorage = (user) => {
     const userInfoAsString = JSON.stringify(user)
     window.localStorage.setItem('eventioSession', userInfoAsString)
   }
@@ -72,7 +73,11 @@ class LoginForm extends Component {
   buildPageContent() {
     const {
       classes,
-      users: { error, success, userInfo }
+      users: {
+        error,
+        success,
+        userInfo
+      }
     } = this.props
 
     const {
