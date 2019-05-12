@@ -88,19 +88,20 @@ class LoginForm extends Component {
       password
     } = this.state
 
-    // const fillInText = this.buildFillingText()
+    const fillInText = this.buildFillingText()
 
-    // if (success) {
-    //   this.setSessionInLocalStorage(userInfo)
-    //   return (
-    //     <Redirect
-    //       to={{
-    //         pathname: `/dashboard`,
-    //         state: { from: this.props.history.location }
-    //       }}
-    //     />
-    //   )
-    // }
+    if (success) {
+      this.setSessionInLocalStorage(userInfo)
+      return (
+        <Redirect
+          to={{
+            pathname: `/dashboard`,
+            state: { from: this.props.history.location }
+          }}
+        />
+      )
+    }
+
     return (
       <div container='true' className='login-form'>
         <div className='login-form__left-column'>
@@ -118,6 +119,7 @@ class LoginForm extends Component {
             <form>
               <div>
                 <div>Sign in to Eventio.</div>
+                {fillInText}
               </div>
               <div>
                 <TextField
