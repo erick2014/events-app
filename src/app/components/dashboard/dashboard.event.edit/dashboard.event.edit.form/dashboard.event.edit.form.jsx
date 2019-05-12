@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 // material ui
 import Grid from '@material-ui/core/Grid'
-import  FormControl  from '@material-ui/core/FormControl'
+import FormControl from '@material-ui/core/FormControl'
 import { withStyles } from '@material-ui/core/styles'
 
 // components
