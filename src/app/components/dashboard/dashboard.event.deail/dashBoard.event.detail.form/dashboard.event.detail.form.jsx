@@ -2,8 +2,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // material ui
-import Grid from 'material-ui/Grid'
-import {ArrowBack} from 'material-ui-icons'
+import Grid from '@material-ui/core/Grid'
+import {ArrowBack} from '@material-ui/icons'
 
 // components
 import ProfileIcon from 'components/ProfileIcon/ProfileIcon'

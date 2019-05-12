@@ -2,9 +2,9 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 /* Material ui stuff */
-import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
-import {Person} from 'material-ui-icons'
+import { withStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import {Person} from '@material-ui/icons'
 
 const styles = {
   button: {

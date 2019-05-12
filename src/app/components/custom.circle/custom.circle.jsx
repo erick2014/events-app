@@ -1,8 +1,8 @@
 import React from 'react'
-import Avatar from 'material-ui/Avatar'
-import {Done} from 'material-ui-icons'
-import {Add} from 'material-ui-icons'
-import { withStyles } from 'material-ui/styles'
+import Avatar from '@material-ui/icons'
+import { Done } from '@material-ui/icons'
+import { Add } from '@material-ui/icons'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   greenCircle: {
@@ -22,7 +22,7 @@ const styles = {
 }
 
 const CustomCircle = props => {
-  const {onClickIcon, classes, color} = props
+  const { onClickIcon, classes, color } = props
   let style
   let icon
 

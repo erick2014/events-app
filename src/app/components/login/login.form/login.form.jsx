@@ -1,16 +1,16 @@
-// react stuff
+// @vendors
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-// material ui components
-import TextField from 'material-ui/TextField/TextField'
-import withStyles from 'material-ui/styles/withStyles'
-import FormControl from 'material-ui/Form/FormControl'
-import Input from 'material-ui/Input'
-import InputLabel from 'material-ui/Input/InputLabel'
-import InputAdornment from 'material-ui/Input/InputAdornment'
-import IconButton from 'material-ui/IconButton/IconButton'
-import Visibility from 'material-ui-icons/Visibility'
-import VisibilityOff from 'material-ui-icons/VisibilityOff'
+import TextField from '@material-ui/core/TextField'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import Input from '@material-ui/core/Input'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import IconButton from '@material-ui/core/IconButton'
+import Visibility from '@material-ui/icons/Visibility'
+import VisibilityOff from '@material-ui/icons/VisibilityOff'
+import { withStyles } from '@material-ui/core/styles'
+
 // components
 import CustomButton from 'components/custom.button/custom.button'
 // start wars img
@@ -30,7 +30,7 @@ const styles = theme => ({
 })
 
 class LoginForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       email: '',
@@ -43,24 +43,24 @@ class LoginForm extends Component {
     this.buildPageContent = this.buildPageContent.bind(this)
   }
 
-  handleClickShowPasssword () {
+  handleClickShowPasssword() {
     this.setState({ showPassword: !this.state.showPassword })
   }
 
-  handleMouseDownPassword (event) {
+  handleMouseDownPassword(event) {
     event.preventDefault()
   };
 
-  handleChange (inputName, event) {
+  handleChange(inputName, event) {
     this.setState({ [inputName]: event.target.value })
   }
 
-  onClickSubmitBtn () {
+  onClickSubmitBtn() {
     const { login } = this.props
     login({ 'email': this.state.email, 'password': this.state.password })
   }
 
-  buildFillingText () {
+  buildFillingText() {
     const { users: { error, errorMessage } } = this.props
     let componentToRender
     if (!error) {
@@ -71,28 +71,38 @@ class LoginForm extends Component {
     return componentToRender
   }
 
-  setSessionInLocalStorage (user) {
+  setSessionInLocalStorage(user) {
     const userInfoAsString = JSON.stringify(user)
     window.localStorage.setItem('eventioSession', userInfoAsString)
   }
 
-  buildPageContent () {
-    const { classes, users: {error, success, userInfo} } = this.props
-    const fillInText = this.buildFillingText()
+  buildPageContent() {
+    const {
+      classes,
+      users: { error, success, userInfo }
+    } = this.props
 
-    if (success) {
-      this.setSessionInLocalStorage(userInfo)
-      return (
-        <Redirect
-          to={{
-            pathname: `/dashboard`,
-            state: {from: this.props.history.location}
-          }}
-        />
-      )
-    }
+    const {
+      email,
+      showPassword,
+      password
+    } = this.state
+
+    // const fillInText = this.buildFillingText()
+
+    // if (success) {
+    //   this.setSessionInLocalStorage(userInfo)
+    //   return (
+    //     <Redirect
+    //       to={{
+    //         pathname: `/dashboard`,
+    //         state: { from: this.props.history.location }
+    //       }}
+    //     />
+    //   )
+    // }
     return (
-      <div container className='login-form'>
+      <div container='true' className='login-form'>
         <div className='login-form__left-column'>
           <div className='login-form__left-column-text'>
             <div>"Great, kid Don't get cocky."</div>
@@ -108,18 +118,17 @@ class LoginForm extends Component {
             <form>
               <div>
                 <div>Sign in to Eventio.</div>
-                {fillInText}
               </div>
               <div>
                 <TextField
+                  className={classes.textField}
                   error={error}
                   id='email'
                   label='Email'
-                  className={classes.textField}
                   defaultValue='Email'
-                  value={this.state.email}
-                  onChange={event => { this.handleChange('email', event) }}
+                  value={email}
                   margin='normal'
+                  onChange={event => this.handleChange('email', event)}
                 />
               </div>
               <div>
@@ -127,9 +136,9 @@ class LoginForm extends Component {
                   <InputLabel htmlFor='password'>Password</InputLabel>
                   <Input
                     className={classes.textField}
-                    id='adornment-password'
-                    type={this.state.showPassword ? 'text' : 'password'}
-                    value={this.state.password}
+                    id='loginPasswordField'
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
                     onChange={event => this.handleChange('password', event)}
                     endAdornment={
                       <InputAdornment position='end'>
@@ -137,7 +146,7 @@ class LoginForm extends Component {
                           onClick={this.handleClickShowPasssword}
                           onMouseDown={event => this.handleMouseDownPassword(event)}
                         >
-                          {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
                         </IconButton>
                       </InputAdornment>
                     }
@@ -150,13 +159,13 @@ class LoginForm extends Component {
             </form>
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 
-  render () {
+  render() {
     return this.buildPageContent()
   }
 }
-// bind component to the store
+
 export default withStyles(styles)(LoginForm)

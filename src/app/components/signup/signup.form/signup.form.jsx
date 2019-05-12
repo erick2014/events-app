@@ -1,22 +1,21 @@
+// @vendors
 import React, { Component } from 'react'
-// material ui components
-import { withStyles } from 'material-ui/styles'
-import Grid from 'material-ui/Grid'
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
 import { Link } from 'react-router-dom'
-import { FormControl, FormHelperText } from 'material-ui/Form'
-import Input, { InputLabel, InputAdornment } from 'material-ui/Input'
-import IconButton from 'material-ui/IconButton'
-import Visibility from 'material-ui-icons/Visibility'
-import VisibilityOff from 'material-ui-icons/VisibilityOff'
+import { FormControl, FormHelperText } from '@material-ui/core'
+
 // util functions
 import utils from 'utils/utils'
+
 // styles to override in components
 import inputStyles from 'components/with.styles/input'
+
 // components
 import CustomButton from 'components/custom.button/custom.button'
 
 class SignUpForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       firstName: '',
@@ -27,11 +26,11 @@ class SignUpForm extends Component {
       showPassword: false,
       showRepeatPassword: false,
       errors: {
-        'firstName': {error: false, message: ''},
-        'lastName': {error: false, message: ''},
-        'email': {error: false, message: ''},
-        'password': {error: false, message: ''},
-        'repeatPassword': {error: false, message: ''}
+        'firstName': { error: false, message: '' },
+        'lastName': { error: false, message: '' },
+        'email': { error: false, message: '' },
+        'password': { error: false, message: '' },
+        'repeatPassword': { error: false, message: '' }
       }
     }
 
@@ -40,19 +39,19 @@ class SignUpForm extends Component {
     this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this)
   }
 
-  handleClickShowPasssword (field) {
+  handleClickShowPasssword(field) {
     this.setState({ [field]: !this.state[field] })
   }
 
-  handleMouseDownPassword (event) {
+  handleMouseDownPassword(event) {
     event.preventDefault()
   };
 
-  handleInputChange (inputName, event, type = '') {
+  handleInputChange(inputName, event, type = '') {
     let validField = utils.fieldIsValid(inputName, event.target.value, type)
 
     let newStateErrors = Object.assign({}, this.state.errors, {
-      [inputName]: {error: validField[inputName], message: validField['message']}
+      [inputName]: { error: validField[inputName], message: validField['message'] }
     })
     // update the state with the values and errors
     this.setState({
@@ -62,7 +61,7 @@ class SignUpForm extends Component {
     this.setState({ [inputName]: event.target.value })
   }
 
-  onClickSignUpBtn () {
+  onClickSignUpBtn() {
     const { signUp, signUpFailure } = this.props
     const fieldsToCheck = {
       firstName: this.state.firstName,
@@ -87,7 +86,7 @@ class SignUpForm extends Component {
     }
   }
 
-  buildFillingText () {
+  buildFillingText() {
     const { users: { error, errorMessage, success, successMessage } } = this.props
     let componentToRender
     if (!error && !success) {
@@ -100,10 +99,10 @@ class SignUpForm extends Component {
     return componentToRender
   }
 
-  render () {
+  render() {
     const { classes } = this.props
     const fillInText = this.buildFillingText()
-    const {firstName: errFirstName, lastName: errLastName, email: errEmail, password: errPassword, repeatPassword: errRepeatedPass} = this.state.errors
+    const { firstName: errFirstName, lastName: errLastName, email: errEmail, password: errPassword, repeatPassword: errRepeatedPass } = this.state.errors
 
     return (
       <Grid container className='sign-up-form' spacing={24}>
@@ -137,15 +136,15 @@ class SignUpForm extends Component {
                     margin='normal'
                     required
                     error={errFirstName.error}
-                    >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                  >
+                    <div classes={{ root: classes.rootLabel }}>
                       First name
-                    </InputLabel>
-                    <Input
-                      classes={{inkbar: classes.inkbar, error: classes.error}}
+                    </div>
+                    <input type="text"
+                      classes={{ inkbar: classes.inkbar, error: classes.error }}
                       value={this.state.firstName}
                       onChange={event => this.handleInputChange('firstName', event)}
-                     />
+                    />
                     <FormHelperText>
                       {errFirstName ? errFirstName.message : ''}
                     </FormHelperText>
@@ -160,14 +159,14 @@ class SignUpForm extends Component {
                     required
                     error={errLastName.error}
                   >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                    <div classes={{ root: classes.rootLabel }}>
                       Last name
-                    </InputLabel>
-                    <Input
-                      classes={{inkbar: classes.inkbar, error: classes.error}}
+                    </div>
+                    <input type="text"
+                      classes={{ inkbar: classes.inkbar, error: classes.error }}
                       value={this.state.lastName}
                       onChange={event => this.handleInputChange('lastName', event)}
-                     />
+                    />
                     <FormHelperText>
                       {errLastName ? errLastName.message : ''}
                     </FormHelperText>
@@ -182,14 +181,14 @@ class SignUpForm extends Component {
                     required
                     error={errEmail.error}
                   >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                    <div classes={{ root: classes.rootLabel }}>
                       Email
-                    </InputLabel>
-                    <Input
-                      classes={{inkbar: classes.inkbar, error: classes.error}}
+                    </div>
+                    <input type="text"
+                      classes={{ inkbar: classes.inkbar, error: classes.error }}
                       value={this.state.email}
                       onChange={event => this.handleInputChange('email', event, 'email')}
-                     />
+                    />
                     <FormHelperText>
                       {errEmail ? errEmail.message : ''}
                     </FormHelperText>
@@ -202,22 +201,12 @@ class SignUpForm extends Component {
                     error={errPassword.error}
                     margin='normal'
                     fullWidth>
-                    <InputLabel htmlFor='password'>Password</InputLabel>
-                    <Input
-                      classes={{inkbar: classes.inkbar, error: classes.error}}
+                    <div htmlFor='password'>Password</div>
+                    <input
+                      classes={{ inkbar: classes.inkbar, error: classes.error }}
                       type={this.state.showPassword ? 'text' : 'password'}
                       value={this.state.password}
                       onChange={event => this.handleInputChange('password', event)}
-                      endAdornment={
-                        <InputAdornment position='end'>
-                          <IconButton
-                            onClick={() => { this.handleClickShowPasssword('showPassword') }}
-                            onMouseDown={event => this.handleMouseDownPassword(event)}
-                          >
-                            {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      }
                     />
                     <FormHelperText>
                       {errPassword ? errPassword.message : ''}
@@ -231,22 +220,12 @@ class SignUpForm extends Component {
                     error={errRepeatedPass.error}
                     margin='normal'
                     fullWidth>
-                    <InputLabel htmlFor='password'>Password</InputLabel>
-                    <Input
-                      classes={{inkbar: classes.inkbar, error: classes.error}}
+                    <div htmlFor='password'>Password</div>
+                    <input
+                      classes={{ inkbar: classes.inkbar, error: classes.error }}
                       type={this.state.showRepeatPassword ? 'text' : 'password'}
                       value={this.state.repeatPassword}
                       onChange={event => this.handleInputChange('repeatPassword', event)}
-                      endAdornment={
-                        <InputAdornment position='end'>
-                          <IconButton
-                            onClick={() => { this.handleClickShowPasssword('showRepeatPassword') }}
-                            onMouseDown={event => this.handleMouseDownPassword(event)}
-                          >
-                            {this.state.showRepeatPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      }
                     />
                     <FormHelperText>
                       {errRepeatedPass ? errRepeatedPass.message : ''}

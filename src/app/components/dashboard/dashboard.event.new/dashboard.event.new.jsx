@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import dashboardActions from 'reduxConfig/actions/dashboard'
 import loginActions from 'reduxConfig/actions/login'
 // material ui stuff
-import Grid from 'material-ui/Grid'
-import {Close} from 'material-ui-icons'
+import Grid from '@material-ui/core/Grid'
+import {Close} from '@material-ui/icons'
 // components
 import DashboardEventNewForm from 'components/dashboard/dashboard.event.new/dashboard.event.new.form/dashboard.event.new.form'
 

@@ -2,10 +2,9 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 // material ui
-import Grid from 'material-ui/Grid'
-import { FormControl } from 'material-ui/Form'
-import Input, { InputLabel } from 'material-ui/Input'
-import { withStyles } from 'material-ui/styles'
+import Grid from '@material-ui/core/Grid'
+import  FormControl  from '@material-ui/core/FormControl'
+import { withStyles } from '@material-ui/core/styles'
 
 // components
 import ProfileIcon from 'components/ProfileIcon/ProfileIcon'
@@ -92,10 +91,10 @@ class DashBoardEventEditForm extends Component {
                     margin='normal'
                     required
                     >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                    <label classes={{root: classes.rootLabel}}>
                       Date
-                    </InputLabel>
-                    <Input
+                    </label>
+                    <input type="text"
                       value={date}
                       onChange={event => this.handleInputChange('date', event)}
                       />
@@ -108,10 +107,11 @@ class DashBoardEventEditForm extends Component {
                     margin='normal'
                     required
                     >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                    <div classes={{root: classes.rootLabel}}>
                       Time
-                    </InputLabel>
-                    <Input
+                    </div>
+                    <input
+                      type="text"
                       value={time}
                       onChange={event => this.handleInputChange('time', event)}
                       />
@@ -124,10 +124,11 @@ class DashBoardEventEditForm extends Component {
                     margin='normal'
                     required
                     >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                    <div classes={{root: classes.rootLabel}}>
                       Title
-                    </InputLabel>
-                    <Input
+                    </div>
+                    <input
+                      type="text"
                       value={title}
                       onChange={event => this.handleInputChange('title', event)}
                       />
@@ -140,10 +141,10 @@ class DashBoardEventEditForm extends Component {
                     margin='normal'
                     required
                     >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                    <div classes={{root: classes.rootLabel}}>
                       Description
-                    </InputLabel>
-                    <Input
+                    </div>
+                    <input type="text"
                       value={description}
                       onChange={event => this.handleInputChange('description', event)}
                       />
@@ -156,10 +157,10 @@ class DashBoardEventEditForm extends Component {
                     margin='normal'
                     required
                     >
-                    <InputLabel classes={{root: classes.rootLabel}}>
+                    <div classes={{root: classes.rootLabel}}>
                       Capacity
-                    </InputLabel>
-                    <Input
+                    </div>
+                    <input type="text"
                       value={capacity}
                       onChange={event => this.handleInputChange('capacity', event)}
                       />

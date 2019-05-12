@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import dashboardActions from 'reduxConfig/actions/dashboard'
 // material ui
-import Grid from 'material-ui/Grid'
+import Grid from '@material-ui/core/Grid'
 // components
 import DashboardEvent from 'components/dashboard/dashboard.event/dashboard.event'
 import CustomCircle from 'components/custom.circle/custom.circle'

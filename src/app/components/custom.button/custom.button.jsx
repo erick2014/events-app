@@ -1,6 +1,6 @@
 import React from 'react'
-import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
+import { withStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
 
 const styles = {
   btn: {
@@ -17,7 +17,7 @@ const styles = {
 const CustomBtn = props => {
   const { classes, text, onClickHandler } = props
   return (
-    <Button variant='raised' classes={{raised: classes.btn}} onClick={onClickHandler}>
+    <Button variant='raised' classes={{ raised: classes.btn }} onClick={onClickHandler}>
       {text}
     </Button>
   )

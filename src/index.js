@@ -1,14 +1,13 @@
-// import react dependencies
+// @vendors
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route } from 'react-router-dom'
-
-// Redux stuff
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
-// main app component
+
+// @components
 import Login from 'components/login/login'
 import SignUp from 'components/signup/signup'
 import Dashboard from 'components/dashboard/dashboard'
@@ -18,7 +17,7 @@ import DashboardEventEdit from 'components/dashboard/dashboard.event.edit/dashbo
 
 import thunkMiddleware from 'redux-thunk'
 
-// import reducers
+// reducers
 import usersReducer from 'reduxConfig/reducers/users'
 import eventsReducer from 'reduxConfig/reducers/events'
 
@@ -50,12 +49,12 @@ class App extends Component {
     return (
       <div>
         <Route exact path='/' component={Login} />
-        <Route path='/login' component={Login} />
+        {/* <Route path='/login' component={Login} />
         <Route path='/signup' component={SignUp} />
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/event-detail/:id' component={DashboardEventDetail} />
         <Route path='/event-new/' component={DashboardEventNew} />
-        <Route path='/event-edit/:id' component={DashboardEventEdit} />
+        <Route path='/event-edit/:id' component={DashboardEventEdit} /> */}
       </div>
     )
   }

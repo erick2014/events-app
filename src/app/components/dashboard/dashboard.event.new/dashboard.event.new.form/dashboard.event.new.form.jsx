@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 // material ui stuff
-import { FormControl, FormHelperText } from 'material-ui/Form'
-import Input, { InputLabel } from 'material-ui/Input'
-import { withStyles } from 'material-ui/styles'
+import { FormControl, FormHelperText } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 // util functions
 import utils from 'utils/utils'
 // components
@@ -11,7 +10,7 @@ import CustomButton from 'components/custom.button/custom.button'
 import inputStyles from 'components/with.styles/input'
 
 class DashboardEventNewForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       title: '',
@@ -20,7 +19,7 @@ class DashboardEventNewForm extends Component {
       time: '',
       capacity: '',
       errors: {
-        'capacity': {error: false, message: ''},
+        'capacity': { error: false, message: '' },
         'time': { error: false, message: '' },
         'title': { error: false, message: '' },
         'description': { error: false, message: '' },
@@ -31,11 +30,11 @@ class DashboardEventNewForm extends Component {
     this.buildFeedBackText = this.buildFeedBackText.bind(this)
   }
 
-  handleInputChange (inputName, event, type = '') {
+  handleInputChange(inputName, event, type = '') {
     let validField = utils.fieldIsValid(inputName, event.target.value, type)
 
     let newStateErrors = Object.assign({}, this.state.errors, {
-      [inputName]: {error: validField[inputName], message: validField['message']}
+      [inputName]: { error: validField[inputName], message: validField['message'] }
     })
     // update the state with the values and errors
     this.setState({
@@ -44,7 +43,7 @@ class DashboardEventNewForm extends Component {
     })
   }
 
-  onClickCreateEventBtn () {
+  onClickCreateEventBtn() {
     const { createEvent, eventFailure } = this.props
     const fieldsToCheck = {
       'capacity': this.state.capacity,
@@ -71,7 +70,7 @@ class DashboardEventNewForm extends Component {
     }
   }
 
-  buildFeedBackText () {
+  buildFeedBackText() {
     const { events: { error, errorMessage, success, successMessage } } = this.props
     let componentToRender
 
@@ -85,7 +84,7 @@ class DashboardEventNewForm extends Component {
     return componentToRender
   }
 
-  render () {
+  render() {
     const { classes } = this.props
     const feedbackText = this.buildFeedBackText()
     console.log('current state ', this.state)
@@ -104,15 +103,15 @@ class DashboardEventNewForm extends Component {
               margin='normal'
               required
               error={this.state.errors.title.error}
-              >
-              <InputLabel classes={{root: classes.rootLabel}}>
+            >
+              <InputLabel classes={{ root: classes.rootLabel }}>
                 Title
               </InputLabel>
               <Input
-                classes={{inkbar: classes.inkbar, error: classes.error}}
+                classes={{ inkbar: classes.inkbar, error: classes.error }}
                 value={this.state.title}
                 onChange={event => this.handleInputChange('title', event)}
-                />
+              />
               <FormHelperText>
                 {this.state.errors.title ? this.state.errors.title.message : ''}
               </FormHelperText>
@@ -125,15 +124,15 @@ class DashboardEventNewForm extends Component {
               margin='normal'
               required
               error={this.state.errors.description.error}
-              >
-              <InputLabel classes={{root: classes.rootLabel}}>
+            >
+              <div classes={{ root: classes.rootLabel }}>
                 Description
-              </InputLabel>
+              </div>
               <Input
-                classes={{inkbar: classes.inkbar, error: classes.error}}
+                classes={{ inkbar: classes.inkbar, error: classes.error }}
                 value={this.state.description}
                 onChange={event => this.handleInputChange('description', event)}
-                />
+              />
               <FormHelperText>
                 {this.state.errors.description ? this.state.errors.description.message : ''}
               </FormHelperText>
@@ -146,15 +145,15 @@ class DashboardEventNewForm extends Component {
               margin='normal'
               required
               error={this.state.errors.date.error}
-              >
-              <InputLabel classes={{root: classes.rootLabel}}>
+            >
+              <div classes={{ root: classes.rootLabel }}>
                 Date
-              </InputLabel>
-              <Input
-                classes={{inkbar: classes.inkbar, error: classes.error}}
+              </div>
+              <input type="text"
+                classes={{ inkbar: classes.inkbar, error: classes.error }}
                 value={this.state.date}
                 onChange={event => this.handleInputChange('date', event)}
-                />
+              />
               <FormHelperText>
                 {this.state.errors.date ? this.state.errors.date.message : ''}
               </FormHelperText>
@@ -167,15 +166,15 @@ class DashboardEventNewForm extends Component {
               margin='normal'
               required
               error={this.state.errors.time.error}
-              >
-              <InputLabel classes={{root: classes.rootLabel}}>
+            >
+              <div classes={{ root: classes.rootLabel }}>
                 Time
-              </InputLabel>
-              <Input
-                classes={{inkbar: classes.inkbar, error: classes.error}}
+              </div>
+              <input type="text"
+                classes={{ inkbar: classes.inkbar, error: classes.error }}
                 value={this.state.time}
                 onChange={event => this.handleInputChange('time', event, 'time')}
-                />
+              />
               <FormHelperText>
                 {this.state.errors.time ? this.state.errors.time.message : ''}
               </FormHelperText>
@@ -188,15 +187,15 @@ class DashboardEventNewForm extends Component {
               margin='normal'
               required
               error={this.state.errors.capacity.error}
-              >
-              <InputLabel classes={{ root: classes.rootLabel }}>
+            >
+              <div classes={{ root: classes.rootLabel }}>
                 Capacity test
-              </InputLabel>
-              <Input
-                classes={{inkbar: classes.inkbar, error: classes.error}}
+              </div>
+              <input type="text"
+                classes={{ inkbar: classes.inkbar, error: classes.error }}
                 value={this.state.capacity}
                 onChange={event => this.handleInputChange('capacity', event, 'int')}
-                />
+              />
               <FormHelperText>
                 {this.state.errors.capacity ? this.state.errors.capacity.message : ''}
               </FormHelperText>

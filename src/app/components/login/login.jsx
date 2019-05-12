@@ -4,11 +4,7 @@ import { connect } from 'react-redux'
 import loginActions from 'reduxConfig/actions/login'
 import LoginForm from 'components/login/login.form/login.form'
 
-class Login extends Component {
-  render () {
-    return <LoginForm {...this.props} />
-  }
-}
+const Login = props => <LoginForm {...props} />
 // bind component to the store
 export default connect(
   // map props
