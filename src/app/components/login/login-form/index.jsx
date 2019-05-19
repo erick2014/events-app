@@ -112,13 +112,13 @@ class LoginForm extends Component {
           </div>
         </div>
         <div className='login-form__right-column'>
-          <div className='login-form__right-column-signup-text'>
+          <div className='signup-text'>
             <Link to='/signUp'>Don't have account? SIGN UP </Link>
           </div>
           <div className='login-form__right-column-form-fields'>
             <form>
               <div>
-                <div>Sign in to Eventio.</div>
+                <div className="main-title">Sign in to Eventio.</div>
                 {fillInText}
               </div>
               <div>
