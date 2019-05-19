@@ -60,9 +60,9 @@ class LoginForm extends Component {
     const { users: { error, errorMessage } } = this.props
     let componentToRender
     if (!error) {
-      componentToRender = <div className='login-form__right-column-fill-in-text'>Enter your details below</div>
+      componentToRender = <div className='second-title'>Enter your details below</div>
     } else {
-      componentToRender = <div className='login-form__right-column-fill-in-text--red'>{errorMessage}</div>
+      componentToRender = <div className='second-title--red'>{errorMessage}</div>
     }
     return componentToRender
   }
@@ -115,7 +115,7 @@ class LoginForm extends Component {
           <div className='signup-text'>
             <Link to='/signUp'>Don't have account? SIGN UP </Link>
           </div>
-          <div className='login-form__right-column-form-fields'>
+          <div className='form-fields'>
             <form>
               <div>
                 <div className="main-title">Sign in to Eventio.</div>
