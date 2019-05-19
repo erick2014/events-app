@@ -20,16 +20,7 @@ import startWars from 'images/starWars.png'
 import './login.scss';
 
 const styles = theme => ({
-  textField: {
-    width: 480
-  },
-  button: {
-    'background-color': '#5ac296',
-    'font-size': 10,
-    'color': '#fff',
-    'width': 240,
-    'height': 57
-  }
+  textField: {width: 480}
 })
 
 class LoginForm extends Component {
