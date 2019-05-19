@@ -42,6 +42,7 @@ let config = {
               options: {
                 data: `
                   @import "colors";
+                  @import "general";
                 `,
                 includePaths: [
                   path.resolve(__dirname, 'src/assets/stylesheets')
