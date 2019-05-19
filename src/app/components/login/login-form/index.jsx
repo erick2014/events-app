@@ -17,6 +17,8 @@ import CustomButton from 'components/custom.button/custom.button'
 // start wars img
 import startWars from 'images/starWars.png'
 
+import './login.scss';
+
 const styles = theme => ({
   textField: {
     width: 480
@@ -101,7 +103,7 @@ class LoginForm extends Component {
     }
 
     return (
-      <div container='true' className='login-form'>
+      <div className='login-form'>
         <div className='login-form__left-column'>
           <div className='login-form__left-column-text'>
             <div>"Great, kid Don't get cocky."</div>
