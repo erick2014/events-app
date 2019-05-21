@@ -17,7 +17,7 @@ import CustomButton from 'components/custom.button/custom.button'
 // start wars img
 import startWars from 'images/starWars.png'
 
-import './login.scss';
+import './style.scss';
 
 const styles = theme => ({
   textField: {width: 480}
