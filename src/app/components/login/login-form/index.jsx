@@ -96,50 +96,52 @@ class LoginForm extends Component {
                     <div className="signup-text">
                         <Link to="/signUp">Don"t have account? SIGN UP </Link>
                     </div>
-                    <div className="form-fields">
-                        <form>
-                            <div>
-                                <div className="main-title">Sign in to Eventio.</div>
-                                {fillInText}
-                            </div>
-                            <div>
-                                <TextField
-                                    className={classes.textField}
-                                    defaultValue="Email"
-                                    error={error}
-                                    id="email"
-                                    label="Email"
-                                    margin="normal"
-                                    onChange={event => this.handleChange('email', event)}
-                                    value={email}
-                                />
-                            </div>
-                            <div>
-                                <FormControl className={classes.formControl} error={error} margin="normal">
-                                    <InputLabel htmlFor="password">Password</InputLabel>
-                                    <Input
+                    <div className="form-fields-container">
+                        <div className="form-fields">
+                            <form>
+                                <div>
+                                    <div className="main-title">Sign in to Eventio.</div>
+                                    {fillInText}
+                                </div>
+                                <div>
+                                    <TextField
                                         className={classes.textField}
-                                        endAdornment={(
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    onClick={this.handleClickShowPasssword}
-                                                    onMouseDown={event => this.handleMouseDownPassword(event)}
-                                                >
-                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        )}
-                                        id="loginPasswordField"
-                                        onChange={event => this.handleChange('password', event)}
-                                        type={showPassword ? 'text' : 'password'}
-                                        value={password}
+                                        defaultValue="Email"
+                                        error={error}
+                                        id="email"
+                                        label="Email"
+                                        margin="normal"
+                                        onChange={event => this.handleChange('email', event)}
+                                        value={email}
                                     />
-                                </FormControl>
-                            </div>
-                            <div className="login-form__right-column-submit-btn">
-                                <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
-                            </div>
-                        </form>
+                                </div>
+                                <div>
+                                    <FormControl className={classes.formControl} error={error} margin="normal">
+                                        <InputLabel htmlFor="password">Password</InputLabel>
+                                        <Input
+                                            className={classes.textField}
+                                            endAdornment={(
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        onClick={this.handleClickShowPasssword}
+                                                        onMouseDown={event => this.handleMouseDownPassword(event)}
+                                                    >
+                                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            )}
+                                            id="loginPasswordField"
+                                            onChange={event => this.handleChange('password', event)}
+                                            type={showPassword ? 'text' : 'password'}
+                                            value={password}
+                                        />
+                                    </FormControl>
+                                </div>
+                                <div className="login-form__right-column-submit-btn">
+                                    <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

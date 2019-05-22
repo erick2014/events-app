@@ -40,28 +40,34 @@ $imgPath:'/public/images/starWars.png';
       }
     }
 
-    .form-fields {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
+    .form-fields-container {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        height: 100%;
 
-      .main-title {
-        font-family: $openSans;
-        font-size: 35px;
-        color: $black;
-      }
+        .form-fields {
+            align-items: center;
+            display: flex;
+            grid-column: 2/3;
 
-      .second-title {
-        color: $gray-text;
-        font-size: 20px;
-        padding-top: 20px;
+            .main-title {
+              font-family: $openSans;
+              font-size: 35px;
+              color: $black;
+            }
 
-        &--red {
-          padding-top: 10px;
-          color: $red;
+            .second-title {
+              color: $gray-text;
+              font-size: 20px;
+              padding-top: 20px;
+
+              &--red {
+                padding-top: 10px;
+                color: $red;
+              }
+            }
         }
-      }
+
     }
   }
 
