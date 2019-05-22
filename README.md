@@ -1,7 +1,5 @@
-### REACT - REDUX BOILER PLATE
+### EVENTS APP
 
 ```
-	1. React 16
-	2. Redux
-	3. React Router 4
+	to run the application : npm run dev
 ```
