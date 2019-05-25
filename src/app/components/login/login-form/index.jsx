@@ -14,11 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 // components
 import CustomButton from 'components/custom.button/custom.button';
-
-// start wars img
-import startWars from 'images/starWars.png'
-
-import './style.scss';
+import TwoColumnLayout from '../../two-column-layout';
 
 const styles = () => ({
     textField: { width: 480 }
@@ -63,13 +59,8 @@ class LoginForm extends Component {
         window.localStorage.setItem('userSession', JSON.stringify(user));
     }
 
-    buildPageContent() {
+    renderFormFields = () => {
         const { classes } = this.props;
-
-        const error = false;
-        const success = false;
-        const userInfo = {};
-
         const {
             email,
             password,
@@ -77,79 +68,74 @@ class LoginForm extends Component {
         } = this.state;
 
         const fillInText = this.buildFillingText();
+        const error = false;
+
+        return (
+            <form>
+                <div>
+                    <div className="main-title">Sign in to Eventio.</div>
+                    {fillInText}
+                </div>
+                <div>
+                    <TextField
+                        className={classes.textField}
+                        defaultValue="Email"
+                        error={error}
+                        id="email"
+                        label="Email"
+                        margin="normal"
+                        onChange={event => this.handleChange('email', event)}
+                        value={email}
+                    />
+                </div>
+                <div>
+                    <FormControl className={classes.formControl} error={error} margin="normal">
+                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <Input
+                            className={classes.textField}
+                            endAdornment={(
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        onClick={this.handleClickShowPasssword}
+                                        onMouseDown={event => this.handleMouseDownPassword(event)}
+                                    >
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            )}
+                            id="loginPasswordField"
+                            onChange={event => this.handleChange('password', event)}
+                            type={showPassword ? 'text' : 'password'}
+                            value={password}
+                        />
+                    </FormControl>
+                </div>
+                <div className="login-form__right-column-submit-btn">
+                    <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
+                </div>
+            </form>
+        );
+    }
+
+    render() {
+        const success = false;
+        const userInfo = {};
 
         if (success) {
             this.setSessionInLocalStorage(userInfo);
             return (<Redirect to="/dashboard" />);
         }
 
-        return (
-            <div className="login-form">
-                <div className="login-form__left-column">
-                    <div className="login-form__left-column-text">
-                        <div>"Great, kid Don"t get cocky."</div>
-                        <div className="login-form__left-column-text--green">-</div>
-                        <div>Han solo</div>
-                    </div>
-                </div>
-                <div className="login-form__right-column">
-                    <div className="signup-text">
-                        <Link to="/signUp">Don"t have account? SIGN UP </Link>
-                    </div>
-                    <div className="form-fields-container">
-                        <div className="form-fields">
-                            <form>
-                                <div>
-                                    <div className="main-title">Sign in to Eventio.</div>
-                                    {fillInText}
-                                </div>
-                                <div>
-                                    <TextField
-                                        className={classes.textField}
-                                        defaultValue="Email"
-                                        error={error}
-                                        id="email"
-                                        label="Email"
-                                        margin="normal"
-                                        onChange={event => this.handleChange('email', event)}
-                                        value={email}
-                                    />
-                                </div>
-                                <div>
-                                    <FormControl className={classes.formControl} error={error} margin="normal">
-                                        <InputLabel htmlFor="password">Password</InputLabel>
-                                        <Input
-                                            className={classes.textField}
-                                            endAdornment={(
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        onClick={this.handleClickShowPasssword}
-                                                        onMouseDown={event => this.handleMouseDownPassword(event)}
-                                                    >
-                                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            )}
-                                            id="loginPasswordField"
-                                            onChange={event => this.handleChange('password', event)}
-                                            type={showPassword ? 'text' : 'password'}
-                                            value={password}
-                                        />
-                                    </FormControl>
-                                </div>
-                                <div className="login-form__right-column-submit-btn">
-                                    <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+        const rightColumnContent = this.renderFormFields();
+        const topLinkTitle = <Link to="/signUp">Don"t have account? SIGN UP </Link>;
 
-    render() {
-        return this.buildPageContent();
+        return (
+            <TwoColumnLayout
+                rightColumnContent={rightColumnContent}
+                topLinkTitle={topLinkTitle}
+                wrapperPageClassName="login-page"
+            />
+        );
     }
 }
 
