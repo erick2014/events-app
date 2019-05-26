@@ -101,10 +101,6 @@ class LoginForm extends Component {
         }
     }
 
-    renderMyTextField = () => {
-
-    }
-
     renderFormFields = () => {
         const { classes } = this.props;
         const {
@@ -124,7 +120,6 @@ class LoginForm extends Component {
                 </div>
                 <div>
                     <TextField
-                        className="my-text-field"
                         defaultValue="Email"
                         error={error}
                         id="email"
