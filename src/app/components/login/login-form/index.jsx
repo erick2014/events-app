@@ -17,22 +17,11 @@ import axios from 'axios';
 import CustomButton from 'components/custom.button/custom.button';
 import TwoColumnLayout from '../../two-column-layout';
 
+// @constants
+import { BASE_URL } from '../../../constants/server';
+
 // @styles
 import './style.scss';
-
-const styles = () => ({
-    root: {
-        '& label.Mui-focused': {
-            color: 'green'
-        }
-    },
-    input: {
-        color: "green"
-    },
-    label: {
-        color: "white"
-    }
-});
 
 class LoginForm extends Component {
     static propTypes = {
@@ -87,9 +76,8 @@ class LoginForm extends Component {
         window.localStorage.setItem('userSession', JSON.stringify(user));
     }
 
-    // eslint-disable-next-line class-methods-use-this
     async login(email, password) {
-        const serverUrl = 'http://127.0.0.1:4000/user/auth';
+        const serverUrl = `${BASE_URL}user/auth`;
         const requestData = { user: email, password };
         const performLogin = () => axios.post(serverUrl, requestData)
             .then(resp => resp.data);
@@ -165,7 +153,7 @@ class LoginForm extends Component {
         }
 
         const rightColumnContent = this.renderFormFields();
-        const topLinkTitle = <Link to="/signUp">Don"t have account? SIGN UP </Link>;
+        const topLinkTitle = <Link to="/signUp">Dont have account? SIGN UP </Link>;
 
         return (
             <TwoColumnLayout
