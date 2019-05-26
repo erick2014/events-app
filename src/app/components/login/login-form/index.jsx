@@ -129,7 +129,7 @@ class LoginForm extends Component {
                         value={email}
                     />
                 </div>
-                <FormControl className={classes.formControl} error={error} margin="normal">
+                <FormControl error={error} margin="normal">
                     <InputLabel htmlFor="password">Password</InputLabel>
                     <Input
                         className={classes.textField}
