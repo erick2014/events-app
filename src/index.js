@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+// @redux
 import { getHistory, getStore } from 'reduxConfig/store';
+
+// @routing
 import Routing from './routing';
 
 // import general styles

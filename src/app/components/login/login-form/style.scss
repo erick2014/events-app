@@ -1,0 +1,27 @@
+.login-page {
+    .two-layout-column {
+        &__right-column {
+            .form-fields {
+                .email-field,
+                .password-field {
+                    width: 400px;
+                }
+
+                .MuiFormLabel-root-19.MuiFormLabel-error-22 {
+                    color:#0000008a;
+                }
+
+                .second-title {
+                    padding-bottom: 40px;
+                    &--error {
+                        color: $red;
+                    }
+                }
+
+                .submit-btn {
+                    padding-top: 40px;
+                }
+            }
+        }
+    }
+}

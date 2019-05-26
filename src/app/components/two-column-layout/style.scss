@@ -42,13 +42,19 @@ $imgPath:'/public/images/starWars.png';
 
     .form-fields-container {
         display: grid;
-        grid-template-columns: 200px 1fr;
+        grid-template-columns: 230px 1fr;
         height: 100%;
 
         .form-fields {
             align-items: center;
             display: flex;
             grid-column: 2/3;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
 
             .main-title {
               font-family: $openSans;
@@ -58,7 +64,7 @@ $imgPath:'/public/images/starWars.png';
 
             .second-title {
               color: $gray-text;
-              font-size: 20px;
+              font-size: 16px;
               padding-top: 20px;
 
               &--red {
