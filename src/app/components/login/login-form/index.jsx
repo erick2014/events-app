@@ -11,13 +11,27 @@ import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { withStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
-// components
+// @components
 import CustomButton from 'components/custom.button/custom.button';
 import TwoColumnLayout from '../../two-column-layout';
 
+// @styles
+import './style.scss';
+
 const styles = () => ({
-    textField: { width: 480 }
+    root: {
+        '& label.Mui-focused': {
+            color: 'green'
+        }
+    },
+    input: {
+        color: "green"
+    },
+    label: {
+        color: "white"
+    }
 });
 
 class LoginForm extends Component {
@@ -27,13 +41,14 @@ class LoginForm extends Component {
 
     state = {
         email: '',
+        error: false,
         password: '',
         showPassword: false
     }
 
     handleClickShowPasssword = () => {
         const { showPassword } = this.state;
-        this.setState({ showPassword });
+        this.setState({ showPassword: !showPassword });
     }
 
     handleMouseDownPassword = (event) => {
@@ -41,44 +56,75 @@ class LoginForm extends Component {
     };
 
     handleChange = (inputName, event) => {
-        this.setState({ [inputName]: event.target.value });
-    }
-
-    login = () => {
-        // @Todo implement
+        this.setState({
+            [inputName]: event.target.value,
+            error: false
+        });
     }
 
     onClickSubmitBtn = () => {
         const { email, password } = this.state;
-        this.login({ email, password });
+        this.login(email, password);
     }
 
-    buildFillingText = () => (<div className="second-title">Enter your details below</div>)
+    getInformativeMessage = () => {
+        let message = '';
+        let className = 'second-title';
+
+        const { error } = this.state;
+
+        if (error) {
+            className = `second-title ${className}--error`;
+            message = 'Oops! That email and password combination is not valid.';
+        } else {
+            message = 'Enter your details below';
+        }
+
+        return <div className={className}>{message}</div>;
+    }
 
     setSessionInLocalStorage = (user) => {
         window.localStorage.setItem('userSession', JSON.stringify(user));
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    async login(email, password) {
+        const serverUrl = 'http://127.0.0.1:4000/user/auth';
+        const requestData = { user: email, password };
+        const performLogin = () => axios.post(serverUrl, requestData)
+            .then(resp => resp.data);
+        try {
+            await performLogin();
+            this.setState({ error: false });
+        } catch (error) {
+            this.setState({ error: true });
+        }
+    }
+
+    renderMyTextField = () => {
+
     }
 
     renderFormFields = () => {
         const { classes } = this.props;
         const {
             email,
+            error,
             password,
             showPassword
         } = this.state;
 
-        const fillInText = this.buildFillingText();
-        const error = false;
+        const informativeMessage = this.getInformativeMessage();
 
         return (
             <form>
                 <div>
                     <div className="main-title">Sign in to Eventio.</div>
-                    {fillInText}
+                    {informativeMessage}
                 </div>
                 <div>
                     <TextField
-                        className={classes.textField}
+                        className="my-text-field"
                         defaultValue="Email"
                         error={error}
                         id="email"
@@ -88,29 +134,27 @@ class LoginForm extends Component {
                         value={email}
                     />
                 </div>
-                <div>
-                    <FormControl className={classes.formControl} error={error} margin="normal">
-                        <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input
-                            className={classes.textField}
-                            endAdornment={(
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        onClick={this.handleClickShowPasssword}
-                                        onMouseDown={event => this.handleMouseDownPassword(event)}
-                                    >
-                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            )}
-                            id="loginPasswordField"
-                            onChange={event => this.handleChange('password', event)}
-                            type={showPassword ? 'text' : 'password'}
-                            value={password}
-                        />
-                    </FormControl>
-                </div>
-                <div className="login-form__right-column-submit-btn">
+                <FormControl className={classes.formControl} error={error} margin="normal">
+                    <InputLabel htmlFor="password">Password</InputLabel>
+                    <Input
+                        className={classes.textField}
+                        endAdornment={(
+                            <InputAdornment position="end">
+                                <IconButton
+                                    onClick={this.handleClickShowPasssword}
+                                    onMouseDown={event => this.handleMouseDownPassword(event)}
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        )}
+                        id="loginPasswordField"
+                        onChange={event => this.handleChange('password', event)}
+                        type={showPassword ? 'text' : 'password'}
+                        value={password}
+                    />
+                </FormControl>
+                <div className="submit-btn">
                     <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
                 </div>
             </form>
