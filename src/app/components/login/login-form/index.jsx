@@ -1,6 +1,5 @@
 // @vendors
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
@@ -10,11 +9,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 
 // @components
-import CustomButton from 'components/custom.button/custom.button';
+import CustomButton from 'components/custom-button/';
 import TwoColumnLayout from '../../two-column-layout';
 
 // @constants
@@ -24,9 +22,6 @@ import { BASE_URL } from '../../../constants/server';
 import './style.scss';
 
 class LoginForm extends Component {
-    static propTypes = {
-        classes: PropTypes.object.isRequired
-    }
 
     state = {
         email: '',
@@ -90,7 +85,6 @@ class LoginForm extends Component {
     }
 
     renderFormFields = () => {
-        const { classes } = this.props;
         const {
             email,
             error,
@@ -119,7 +113,6 @@ class LoginForm extends Component {
                 <FormControl className="password-field" error={error} margin="normal">
                     <InputLabel htmlFor="password">Password</InputLabel>
                     <Input
-                        className={classes.textField}
                         endAdornment={(
                             <InputAdornment position="end">
                                 <IconButton
@@ -165,4 +158,4 @@ class LoginForm extends Component {
     }
 }
 
-export default withStyles(styles)(LoginForm);
+export default LoginForm;
