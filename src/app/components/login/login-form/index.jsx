@@ -118,18 +118,17 @@ class LoginForm extends Component {
                     <div className="main-title">Sign in to Eventio.</div>
                     {informativeMessage}
                 </div>
-                <div>
-                    <TextField
-                        defaultValue="Email"
-                        error={error}
-                        id="email"
-                        label="Email"
-                        margin="normal"
-                        onChange={event => this.handleChange('email', event)}
-                        value={email}
-                    />
-                </div>
-                <FormControl error={error} margin="normal">
+                <TextField
+                    className="email-field"
+                    defaultValue="Email"
+                    error={error}
+                    id="email"
+                    label="Email"
+                    margin="normal"
+                    onChange={event => this.handleChange('email', event)}
+                    value={email}
+                />
+                <FormControl className="password-field" error={error} margin="normal">
                     <InputLabel htmlFor="password">Password</InputLabel>
                     <Input
                         className={classes.textField}
