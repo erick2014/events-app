@@ -99,35 +99,39 @@ class LoginForm extends Component {
                     <div className="title">Sign in to Eventio.</div>
                     {informativeMessage}
                 </div>
-                <TextField
-                    className="email-field"
-                    defaultValue="Email"
-                    error={error}
-                    id="email"
-                    label="Email"
-                    margin="normal"
-                    onChange={event => this.handleChange('email', event)}
-                    value={email}
-                />
-                <FormControl className="password-field" error={error} margin="normal">
-                    <InputLabel htmlFor="password">Password</InputLabel>
-                    <Input
-                        endAdornment={(
-                            <InputAdornment position="end">
-                                <IconButton
-                                    onClick={this.handleClickShowPasssword}
-                                    onMouseDown={event => this.handleMouseDownPassword(event)}
-                                >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            </InputAdornment>
-                        )}
-                        id="loginPasswordField"
-                        onChange={event => this.handleChange('password', event)}
-                        type={showPassword ? 'text' : 'password'}
-                        value={password}
+                <div className="email-container">
+                    <TextField
+                        className="email-field"
+                        defaultValue="Email"
+                        error={error}
+                        id="email"
+                        label="Email"
+                        margin="normal"
+                        onChange={event => this.handleChange('email', event)}
+                        value={email}
                     />
-                </FormControl>
+                </div>
+                <div className="password-container">
+                    <FormControl className="password-field" error={error} margin="normal">
+                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <Input
+                            endAdornment={(
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        onClick={this.handleClickShowPasssword}
+                                        onMouseDown={event => this.handleMouseDownPassword(event)}
+                                    >
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            )}
+                            id="loginPasswordField"
+                            onChange={event => this.handleChange('password', event)}
+                            type={showPassword ? 'text' : 'password'}
+                            value={password}
+                        />
+                    </FormControl>
+                </div>
             </Fragment>
         );
     }
