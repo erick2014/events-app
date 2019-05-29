@@ -1,5 +1,5 @@
 // @vendors
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
@@ -22,7 +22,6 @@ import { BASE_URL } from '../../../constants/server';
 import './style.scss';
 
 class LoginForm extends Component {
-
     state = {
         email: '',
         error: false,
@@ -95,9 +94,9 @@ class LoginForm extends Component {
         const informativeMessage = this.getInformativeMessage();
 
         return (
-            <form>
-                <div>
-                    <div className="main-title">Sign in to Eventio.</div>
+            <Fragment>
+                <div className="main-titles-container">
+                    <div className="title">Sign in to Eventio.</div>
                     {informativeMessage}
                 </div>
                 <TextField
@@ -129,10 +128,7 @@ class LoginForm extends Component {
                         value={password}
                     />
                 </FormControl>
-                <div className="submit-btn">
-                    <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
-                </div>
-            </form>
+            </Fragment>
         );
     }
 
@@ -146,14 +142,20 @@ class LoginForm extends Component {
         }
 
         const rightColumnContent = this.renderFormFields();
-        const topLinkTitle = <Link to="/signUp">Dont have account? SIGN UP </Link>;
+        const topLinkTitle = (
+            <div className="sign-up-link">
+                <Link to="/signUp">Dont have account? SIGN UP </Link>
+            </div>
+        );
 
         return (
-            <TwoColumnLayout
-                rightColumnContent={rightColumnContent}
-                topLinkTitle={topLinkTitle}
-                wrapperPageClassName="login-page"
-            />
+            <TwoColumnLayout wrapperPageClassName="login-page">
+                {topLinkTitle}
+                {rightColumnContent}
+                <div className="submit-btn">
+                    <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
+                </div>
+            </TwoColumnLayout>
         );
     }
 }
