@@ -10,9 +10,6 @@ import { getHistory, getStore } from 'reduxConfig/store';
 // @routing
 import Routing from './routing';
 
-// import general styles
-require('./assets/stylesheets/styles.scss');
-
 const store = getStore();
 const history = getHistory();
 

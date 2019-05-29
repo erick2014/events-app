@@ -5,8 +5,13 @@ $font-size : 5rem;
 $merriweather: "Merriweather",sans-serif;
 $openSans: 'Open Sans', sans-serif;
 
+html {
+    height: 100%;
+}
+
 body {
   font-family: $merriweather;
+  height: 100%;
 }
 
 a {
@@ -16,4 +21,9 @@ a {
 
 .custom-box-shadow {
   box-shadow: 0 3px 3px 0px rgba(#000, 0.1);
+}
+
+.main-container {
+    display: flex;
+    height: 100%;
 }
