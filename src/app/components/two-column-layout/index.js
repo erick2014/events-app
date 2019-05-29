@@ -7,20 +7,19 @@ import startWars from 'images/starWars.png'
 
 import './style.scss';
 
-const TwoColumnLayout = ({ rightColumnContent, topLinkTitle, wrapperPageClassName }) => (
+const TwoColumnLayout = ({ children, wrapperPageClassName }) => (
     <div className={wrapperPageClassName}>
         <div className="two-layout-column">
             <div className="two-layout-column__left-column">
-                <div className="two-layout-column__left-column-text">
+                <div className="text-container">
                     <div>"Great, kid Don"t get cocky."</div>
                     <div className="two-layout-column__left-column-text--green">-</div>
                     <div>Han solo</div>
                 </div>
             </div>
             <div className="two-layout-column__right-column">
-                <div className="signup-text">{topLinkTitle}</div>
                 <div className="form-fields-container">
-                    <div className="form-fields">{rightColumnContent}</div>
+                    {children}
                 </div>
             </div>
         </div>
@@ -28,8 +27,7 @@ const TwoColumnLayout = ({ rightColumnContent, topLinkTitle, wrapperPageClassNam
 );
 
 TwoColumnLayout.propTypes = {
-    rightColumnContent: PropTypes.node.isRequired,
-    topLinkTitle: PropTypes.node.isRequired,
+    children: PropTypes.arrayOf(PropTypes.node).isRequired,
     wrapperPageClassName: PropTypes.string.isRequired
 };
 
