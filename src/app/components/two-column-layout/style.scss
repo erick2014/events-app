@@ -3,7 +3,7 @@ $imgPath:'/public/images/starWars.png';
 
 .two-layout-column {
     display: flex;
-    height: 100%;
+    // height: 100%;
 
     @include breakpoint(){
         display: grid;
@@ -35,12 +35,30 @@ $imgPath:'/public/images/starWars.png';
         }
     }
 
+    .main-titles-container {
+        .title {
+            font-family: $openSans;
+            font-size: 35px;
+            color: $black;
+        }
+
+        .second-title {
+            color: $gray-text;
+            font-size: 16px;
+
+            &--red {
+                padding-top: 10px;
+                color: $red;
+            }
+        }
+    }
+
     &__right-column {
-        align-items: center;
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        justify-content: center;
+        // align-items: center;
+        // display: flex;
+        // flex: 1;
+        // flex-direction: column;
+        // justify-content: center;
 
         @include breakpoint(){
             justify-content: initial;

@@ -1,12 +1,85 @@
 .login-page {
-    flex: 1;
+    // flex: 1;
+    height: 100%;
+    width: 100%;
+
+    &__left-banner {
+        display: none;
+    }
+
+    &__form-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40px 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "."
+        "titles-container"
+        "form-fields-container"
+        "signup-link"
+        "submit-btn-container";
+        height: 100%;
+
+        .sign-up-link {
+            grid-area: signup-link;
+        }
+
+        .main-titles-container {
+            grid-area: titles-container;
+        }
+
+        .form-fields-container {
+            grid-area: form-fields-container;
+        }
+
+        .submit-btn-container {
+            grid-area: submit-btn-container;
+        }
+
+        .main-titles-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .title {
+                font-family: $openSans;
+                font-size: 35px;
+                color: $black;
+            }
+
+            .second-title {
+                color: $gray-text;
+                font-size: 16px;
+                padding-top: 20px;
+                padding-bottom: 40px;
+
+                &--red {
+                    padding-top: 10px;
+                    color: $red;
+                }
+            }
+
+            .signup-text {
+                padding: 0 30px;
+            }
+        }
+
+        .form-fields-container {
+            padding: 0 30px;
+            .textfield-container {
+                .MuiFormControl-marginNormal-2 {
+                    width: 100%;
+                }
+            }
+        }
+    }
 
     .two-layout-column {
         &__right-column {
             .form-fields-container {
-                display: flex;
-                flex-direction: column;
-                width: 85%;
+                // display: flex;
+                // flex-direction: column;
+                // width: 85%;
 
                 @include breakpoint(){
                     width: 100%;
@@ -16,8 +89,11 @@
                     padding: 0 30px;
                 }
 
-                .MuiFormLabel-root-19.MuiFormLabel-error-22 {
-                    color:#0000008a;
+                .email-field,
+                .password-field {
+                    .MuiFormLabel-error-19 {
+                        color: $input-label;
+                    }
                 }
 
                 .MuiFormControl-marginNormal-2 {
@@ -30,10 +106,10 @@
                 }
 
                 .main-titles-container {
-                    align-items: center;
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
+                    // align-items: center;
+                    // display: flex;
+                    // flex-direction: column;
+                    // width: 100%;
 
                     @include breakpoint(){
                         align-items: initial;
@@ -49,17 +125,14 @@
                 .second-title {
                     padding-top: 20px;
                     padding-bottom: 40px;
-                    &--error {
-                        color: $red;
-                    }
                 }
 
                 .sign-up-link {
-                    align-items: center;
-                    display: flex;
-                    height: 150px;
-                    justify-content: center;
-                    order: 2;
+                    // align-items: center;
+                    // display: flex;
+                    // height: 150px;
+                    // justify-content: center;
+                    // order: 2;
 
                     @include breakpoint(){
                         align-items: flex-start;
@@ -70,14 +143,14 @@
                     }
                 }
 
-                .email-container,
-                .password-container {
-                    display: flex;
-                    justify-content: center;
-                }
+                // .email-container,
+                // .password-container {
+                //     display: flex;
+                //     justify-content: center;
+                // }
 
                 .submit-btn {
-                    order: 3;
+                    // order: 3;
                     align-self: center;
 
                     @include breakpoint(){

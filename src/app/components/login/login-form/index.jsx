@@ -91,17 +91,11 @@ class LoginForm extends Component {
             showPassword
         } = this.state;
 
-        const informativeMessage = this.getInformativeMessage();
-
         return (
             <Fragment>
-                <div className="main-titles-container">
-                    <div className="title">Sign in to Eventio.</div>
-                    {informativeMessage}
-                </div>
-                <div className="email-container">
+                <div className="email-container textfield-container">
                     <TextField
-                        className="email-field"
+                        className="email-field text-field-container"
                         defaultValue="Email"
                         error={error}
                         id="email"
@@ -111,7 +105,7 @@ class LoginForm extends Component {
                         value={email}
                     />
                 </div>
-                <div className="password-container">
+                <div className="password-container textfield-container">
                     <FormControl className="password-field" error={error} margin="normal">
                         <InputLabel htmlFor="password">Password</InputLabel>
                         <Input
@@ -145,21 +139,41 @@ class LoginForm extends Component {
             return (<Redirect to="/dashboard" />);
         }
 
-        const rightColumnContent = this.renderFormFields();
+        const formFields = this.renderFormFields();
         const topLinkTitle = (
             <div className="sign-up-link">
                 <Link to="/signUp">Dont have account? SIGN UP </Link>
             </div>
         );
 
+        const informativeMessage = this.getInformativeMessage();
+        const formTitles = (
+            <div className="main-titles-container">
+                <div className="title">Sign in to Eventio.</div>
+                {informativeMessage}
+            </div>
+        );
+
         return (
-            <TwoColumnLayout wrapperPageClassName="login-page">
-                {topLinkTitle}
-                {rightColumnContent}
-                <div className="submit-btn">
-                    <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
+            <div className="login-page">
+                <div className="login-page__left-banner">
+                    <div className="text-container">
+                        <div>"Great, kid Don"t get cocky."</div>
+                        <div className="two-layout-column__left-column-text--green">-</div>
+                        <div>Han solo</div>
+                    </div>
                 </div>
-            </TwoColumnLayout>
+                <div className="login-page__form-container">
+                    {topLinkTitle}
+                    {formTitles}
+                    <div className="form-fields-container">
+                        {formFields}
+                    </div>
+                    <div className="submit-btn-container">
+                        <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
+                    </div>
+                </div>
+            </div>
         );
     }
 }
