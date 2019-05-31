@@ -10,9 +10,9 @@
     &__form-container {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 40px 1fr 1fr 1fr 1fr;
+        grid-template-rows: 40px 2fr 2fr 1fr 1fr;
         grid-template-areas:
-        "."
+        "titles-container"
         "titles-container"
         "form-fields-container"
         "signup-link"
@@ -21,6 +21,7 @@
 
         .sign-up-link {
             grid-area: signup-link;
+            font-size: 18px;
         }
 
         .main-titles-container {
@@ -35,9 +36,17 @@
             grid-area: submit-btn-container;
         }
 
+        .sign-up-link,
+        .submit-btn-container{
+            align-items: flex-start;
+            display: flex;
+            height: 150px;
+            justify-content: center;
+        }
+
         .main-titles-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             flex-direction: column;
 
@@ -49,7 +58,7 @@
 
             .second-title {
                 color: $gray-text;
-                font-size: 16px;
+                font-size: 18px;
                 padding-top: 20px;
                 padding-bottom: 40px;
 
