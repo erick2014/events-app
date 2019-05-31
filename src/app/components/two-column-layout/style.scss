@@ -5,7 +5,7 @@ $imgPath:'/public/images/starWars.png';
     display: flex;
     // height: 100%;
 
-    @include breakpoint(){
+    @include breakpoint(desktop){
         display: grid;
         grid-template-columns: 400px auto;
     }
@@ -13,13 +13,13 @@ $imgPath:'/public/images/starWars.png';
     &__left-column {
         display: none;
 
-        @include breakpoint(){
+        @include breakpoint(desktop){
             align-items: flex-end;
             background: url($imgPath) no-repeat;
             display: flex;
         }
 
-        .text-container{
+        .text-container {
             color: $white;
             font-size: 22px;
             width: 100%;
@@ -60,7 +60,7 @@ $imgPath:'/public/images/starWars.png';
         // flex-direction: column;
         // justify-content: center;
 
-        @include breakpoint(){
+        @include breakpoint(desktop){
             justify-content: initial;
         }
 
