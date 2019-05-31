@@ -1,10 +1,35 @@
+$imgPath:'/public/images/starWars.png';
+
 .login-page {
-    // flex: 1;
     height: 100%;
     width: 100%;
 
     &__left-banner {
         display: none;
+    }
+
+    @include breakpoint(tablet){
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto;
+
+        &__left-banner {
+            align-items: flex-end;
+            background: url($imgPath) no-repeat;
+            display: flex;
+
+            .bottom-text-container {
+                text-align: center;
+                color: $white;
+                font-size: 18px;
+                margin-bottom: 50px;
+                width: 100%;
+
+                .green-text {
+                    color:$green;
+                }
+            }
+        }
     }
 
     &__form-container {
@@ -17,7 +42,7 @@
         "form-fields-container"
         "signup-link"
         "submit-btn-container";
-        height: 100%;
+        height: 100vh;
 
         .sign-up-link {
             grid-area: signup-link;
@@ -75,96 +100,10 @@
 
         .form-fields-container {
             padding: 0 30px;
+
             .textfield-container {
                 .MuiFormControl-marginNormal-2 {
                     width: 100%;
-                }
-            }
-        }
-    }
-
-    .two-layout-column {
-        &__right-column {
-            .form-fields-container {
-                // display: flex;
-                // flex-direction: column;
-                // width: 85%;
-
-                @include breakpoint(){
-                    width: 100%;
-                }
-
-                .signup-text {
-                    padding: 0 30px;
-                }
-
-                .email-field,
-                .password-field {
-                    .MuiFormLabel-error-19 {
-                        color: $input-label;
-                    }
-                }
-
-                .MuiFormControl-marginNormal-2 {
-                    margin-top:25px;
-                    width:100%;
-
-                    @include breakpoint(){
-                        width: 54%;
-                    }
-                }
-
-                .main-titles-container {
-                    // align-items: center;
-                    // display: flex;
-                    // flex-direction: column;
-                    // width: 100%;
-
-                    @include breakpoint(){
-                        align-items: initial;
-
-                        .title,
-                        .second-title {
-                            width: 54%;
-                            align-self: center
-                        }
-                    }
-                }
-
-                .second-title {
-                    padding-top: 20px;
-                    padding-bottom: 40px;
-                }
-
-                .sign-up-link {
-                    // align-items: center;
-                    // display: flex;
-                    // height: 150px;
-                    // justify-content: center;
-                    // order: 2;
-
-                    @include breakpoint(){
-                        align-items: flex-start;
-                        justify-content: flex-end;
-                        order: initial;
-                        padding-top: 25px;
-                        padding-right: 25px;
-                    }
-                }
-
-                // .email-container,
-                // .password-container {
-                //     display: flex;
-                //     justify-content: center;
-                // }
-
-                .submit-btn {
-                    // order: 3;
-                    align-self: center;
-
-                    @include breakpoint(){
-                        margin-top: 40px;
-                    }
                 }
             }
         }
