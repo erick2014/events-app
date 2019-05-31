@@ -157,9 +157,9 @@ class LoginForm extends Component {
         return (
             <div className="login-page">
                 <div className="login-page__left-banner">
-                    <div className="text-container">
+                    <div className="bottom-text-container">
                         <div>"Great, kid Don"t get cocky."</div>
-                        <div className="two-layout-column__left-column-text--green">-</div>
+                        <div className="green-text">-</div>
                         <div>Han solo</div>
                     </div>
                 </div>
