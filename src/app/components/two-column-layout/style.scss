@@ -1,5 +1,53 @@
 $imgPath:'/public/images/starWars.png';
 
+@mixin leftBanner(){
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+
+    &__left-banner {
+        align-items: flex-end;
+        background: url($imgPath) no-repeat;
+        display: flex;
+
+        .bottom-text-container {
+            text-align: center;
+            color: $white;
+            font-size: 18px;
+            margin-bottom: 50px;
+            width: 100%;
+
+            .green-text {
+                color:$green;
+            }
+        }
+    }
+}
+
+@mixin formLayout($grid-template-columns){
+    grid-template-columns: $grid-template-columns;
+    grid-template-rows: 1fr 2fr 2fr 1fr 1fr;
+    grid-template-areas:
+        ". signup-link signup-link"
+        ". titles-container ."
+        ". form-fields-container ."
+        ". submit-btn-container ."
+        ". submit-btn-container .";
+
+    .sign-up-link {
+        justify-content: flex-end;
+        padding: 20px 30px 0 0;
+    }
+
+    .submit-btn-container {
+        justify-content: flex-start;
+    }
+
+    .form-fields-container {
+        padding: 0;
+    }
+}
+
 .two-layout-column {
     height: 100%;
     width: 100%;
@@ -9,27 +57,11 @@ $imgPath:'/public/images/starWars.png';
     }
 
     @include breakpoint(tablet){
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: auto;
+        @include leftBanner
+    }
 
-        &__left-banner {
-            align-items: flex-end;
-            background: url($imgPath) no-repeat;
-            display: flex;
-
-            .bottom-text-container {
-                text-align: center;
-                color: $white;
-                font-size: 18px;
-                margin-bottom: 50px;
-                width: 100%;
-
-                .green-text {
-                    color:$green;
-                }
-            }
-        }
+    @include breakpoint(desktop){
+        @include leftBanner
     }
 
     &__form-container {
@@ -77,27 +109,8 @@ $imgPath:'/public/images/starWars.png';
         }
 
         @include breakpoint(tablet){
-            grid-template-columns: 35px 1fr 20px;
-            grid-template-rows: 1fr 2fr 2fr 1fr 1fr;
-            grid-template-areas:
-                ". signup-link ."
-                ". titles-container ."
-                ". form-fields-container ."
-                ". submit-btn-container ."
-                ". submit-btn-container .";
-
-            .sign-up-link {
-                justify-content: flex-end;
-                padding: 20px 10px 0 0;
-            }
-
-            .submit-btn-container {
-                justify-content: flex-start;
-            }
-
-            .form-fields-container {
-                padding: 0;
-            }
+            $grid-template-columns: 60px 1fr 60px;
+            @include formLayout($grid-template-columns);
         }
 
         .main-titles-container {
@@ -126,6 +139,15 @@ $imgPath:'/public/images/starWars.png';
 
             .signup-text {
                 padding: 0 30px;
+            }
+        }
+
+        @include breakpoint(desktop){
+            $grid-template-columns: 180px 1fr 180px;
+            @include formLayout($grid-template-columns);
+
+            .main-titles-container {
+                align-items: flex-start;
             }
         }
 
