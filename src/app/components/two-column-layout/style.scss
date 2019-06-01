@@ -1,70 +1,111 @@
-
 $imgPath:'/public/images/starWars.png';
 
 .two-layout-column {
-    display: flex;
-    // height: 100%;
+    height: 100%;
+    width: 100%;
 
-    @include breakpoint(desktop){
-        display: grid;
-        grid-template-columns: 400px auto;
+    &__left-banner {
+        display: none;
     }
 
-    &__left-column {
-        display: none;
+    @include breakpoint(tablet){
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto;
 
-        @include breakpoint(desktop){
+        &__left-banner {
             align-items: flex-end;
             background: url($imgPath) no-repeat;
             display: flex;
-        }
 
-        .text-container {
-            color: $white;
-            font-size: 22px;
-            width: 100%;
-            justify-content: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 50px;
+            .bottom-text-container {
+                text-align: center;
+                color: $white;
+                font-size: 18px;
+                margin-bottom: 50px;
+                width: 100%;
 
-            &--green {
-                color:$green;
+                .green-text {
+                    color:$green;
+                }
             }
         }
     }
 
-    .main-titles-container {
-        .title {
-            font-family: $openSans;
-            font-size: 35px;
-            color: $black;
-        }
+    &__form-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40px 2fr 2fr 1fr 1fr;
+        grid-template-areas:
+            "titles-container"
+            "titles-container"
+            "form-fields-container"
+            "signup-link"
+            "submit-btn-container";
+        height: 100vh;
 
-        .second-title {
-            color: $gray-text;
-            font-size: 16px;
-
-            &--red {
-                padding-top: 10px;
-                color: $red;
-            }
-        }
-    }
-
-    &__right-column {
-        // align-items: center;
-        // display: flex;
-        // flex: 1;
-        // flex-direction: column;
-        // justify-content: center;
-
-        @include breakpoint(desktop){
-            justify-content: initial;
+        .sign-up-link {
+            grid-area: signup-link;
+            font-size: 18px;
         }
 
         .main-titles-container {
+            grid-area: titles-container;
+        }
+
+        .form-fields-container {
+            grid-area: form-fields-container;
+            padding: 0 30px;
+
+            .textfield-container {
+                .MuiFormControl-marginNormal-2 {
+                    width: 100%;
+                }
+            }
+        }
+
+        .submit-btn-container {
+            grid-area: submit-btn-container;
+        }
+
+        .sign-up-link,
+        .submit-btn-container {
+            align-items: flex-start;
+            display: flex;
+            height: 150px;
+            justify-content: center;
+        }
+
+        @include breakpoint(tablet){
+            grid-template-columns: 35px 1fr 20px;
+            grid-template-rows: 1fr 2fr 2fr 1fr 1fr;
+            grid-template-areas:
+                ". signup-link ."
+                ". titles-container ."
+                ". form-fields-container ."
+                ". submit-btn-container ."
+                ". submit-btn-container .";
+
+            .sign-up-link {
+                justify-content: flex-end;
+                padding: 20px 10px 0 0;
+            }
+
+            .submit-btn-container {
+                justify-content: flex-start;
+            }
+
+            .form-fields-container {
+                padding: 0;
+            }
+        }
+
+        .main-titles-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+
             .title {
                 font-family: $openSans;
                 font-size: 35px;
@@ -73,14 +114,20 @@ $imgPath:'/public/images/starWars.png';
 
             .second-title {
                 color: $gray-text;
-                font-size: 16px;
+                font-size: 18px;
+                padding-top: 20px;
+                padding-bottom: 40px;
 
                 &--red {
                     padding-top: 10px;
                     color: $red;
                 }
             }
+
+            .signup-text {
+                padding: 0 30px;
+            }
         }
+
     }
 }
-
