@@ -18,7 +18,6 @@ import TwoColumnLayout from '../../two-column-layout';
 // @constants
 import { BASE_URL } from '../../../constants/server';
 
-
 class LoginForm extends Component {
     state = {
         email: '',
