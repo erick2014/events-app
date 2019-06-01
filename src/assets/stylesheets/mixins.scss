@@ -1,7 +1,16 @@
+$max-breakpoint-mobile: 630px;
 $breakpoint-desktop: 1024px;
+$max-breakpoint-tablet: 1023px;
 
-@mixin breakpoint($min-width:768,$max-width:$breakpoint-desktop) {
-    @media (min-width: $breakpoint-desktop){
-        @content
+@mixin breakpoint($point) {
+    @if $point == tablet {
+        @media (min-width: $max-breakpoint-mobile) and (max-width: $max-breakpoint-tablet){
+           @content;
+        }
+    }
+    @else if $point == desktop {
+        @media (min-width: $breakpoint-desktop){
+            @content
+        }
     }
 }

@@ -1,52 +1,124 @@
-
 $imgPath:'/public/images/starWars.png';
 
-.two-layout-column {
-    display: flex;
-    height: 100%;
+@mixin leftBanner(){
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
 
-    @include breakpoint(){
-        display: grid;
-        grid-template-columns: 400px auto;
-    }
+    &__left-banner {
+        align-items: flex-end;
+        background: url($imgPath) no-repeat;
+        display: flex;
 
-    &__left-column {
-        display: none;
-
-        @include breakpoint(){
-            align-items: flex-end;
-            background: url($imgPath) no-repeat;
-            display: flex;
-        }
-
-        .text-container{
+        .bottom-text-container {
+            text-align: center;
             color: $white;
-            font-size: 22px;
-            width: 100%;
-            justify-content: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-size: 18px;
             margin-bottom: 50px;
+            width: 100%;
 
-            &--green {
+            .green-text {
                 color:$green;
             }
         }
     }
+}
 
-    &__right-column {
-        align-items: center;
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        justify-content: center;
+@mixin formLayout($grid-template-columns){
+    grid-template-columns: $grid-template-columns;
+    grid-template-rows: 1fr 2fr 2fr 1fr 1fr;
+    grid-template-areas:
+        ". signup-link signup-link"
+        ". titles-container ."
+        ". form-fields-container ."
+        ". submit-btn-container ."
+        ". submit-btn-container .";
 
-        @include breakpoint(){
-            justify-content: initial;
+    .sign-up-link {
+        justify-content: flex-end;
+        padding: 20px 30px 0 0;
+    }
+
+    .submit-btn-container {
+        justify-content: flex-start;
+    }
+
+    .form-fields-container {
+        padding: 0;
+    }
+}
+
+.two-layout-column {
+    height: 100%;
+    width: 100%;
+
+    &__left-banner {
+        display: none;
+    }
+
+    @include breakpoint(tablet){
+        @include leftBanner
+    }
+
+    @include breakpoint(desktop){
+        @include leftBanner
+    }
+
+    &__form-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40px 2fr 2fr 1fr 1fr;
+        grid-template-areas:
+            "titles-container"
+            "titles-container"
+            "form-fields-container"
+            "signup-link"
+            "submit-btn-container";
+        height: 100vh;
+
+        .sign-up-link {
+            grid-area: signup-link;
+            font-size: 18px;
         }
 
         .main-titles-container {
+            grid-area: titles-container;
+        }
+
+        .form-fields-container {
+            grid-area: form-fields-container;
+            padding: 0 30px;
+
+            .textfield-container {
+                .MuiFormControl-marginNormal-2 {
+                    width: 100%;
+                }
+            }
+        }
+
+        .submit-btn-container {
+            grid-area: submit-btn-container;
+        }
+
+        .sign-up-link,
+        .submit-btn-container {
+            align-items: flex-start;
+            display: flex;
+            height: 150px;
+            justify-content: center;
+        }
+
+        @include breakpoint(tablet){
+            $grid-template-columns: 60px 1fr 60px;
+            @include formLayout($grid-template-columns);
+        }
+
+        .main-titles-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+
             .title {
                 font-family: $openSans;
                 font-size: 35px;
@@ -55,14 +127,29 @@ $imgPath:'/public/images/starWars.png';
 
             .second-title {
                 color: $gray-text;
-                font-size: 16px;
+                font-size: 18px;
+                padding-top: 20px;
+                padding-bottom: 40px;
 
                 &--red {
                     padding-top: 10px;
                     color: $red;
                 }
             }
+
+            .signup-text {
+                padding: 0 30px;
+            }
         }
+
+        @include breakpoint(desktop){
+            $grid-template-columns: 180px 1fr 180px;
+            @include formLayout($grid-template-columns);
+
+            .main-titles-container {
+                align-items: flex-start;
+            }
+        }
+
     }
 }
-

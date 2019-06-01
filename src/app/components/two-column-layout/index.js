@@ -7,28 +7,37 @@ import startWars from 'images/starWars.png'
 
 import './style.scss';
 
-const TwoColumnLayout = ({ children, wrapperPageClassName }) => (
-    <div className={wrapperPageClassName}>
+const TwoColumnLayout = ({ children }) => {
+    const topLinkTitle = children[0];
+    const formTitles = children[1];
+    const formFields = children[2];
+    const submitButton = children[3];
+
+    return (
         <div className="two-layout-column">
-            <div className="two-layout-column__left-column">
-                <div className="text-container">
+            <div className="two-layout-column__left-banner">
+                <div className="bottom-text-container">
                     <div>"Great, kid Don"t get cocky."</div>
-                    <div className="two-layout-column__left-column-text--green">-</div>
+                    <div className="green-text">-</div>
                     <div>Han solo</div>
                 </div>
             </div>
-            <div className="two-layout-column__right-column">
+            <div className="two-layout-column__form-container">
+                {topLinkTitle}
+                {formTitles}
                 <div className="form-fields-container">
-                    {children}
+                    {formFields}
+                </div>
+                <div className="submit-btn-container">
+                    {submitButton}
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 TwoColumnLayout.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.node).isRequired,
-    wrapperPageClassName: PropTypes.string.isRequired
+    children: PropTypes.arrayOf(PropTypes.node).isRequired
 };
 
 export default TwoColumnLayout;
