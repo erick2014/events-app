@@ -18,8 +18,6 @@ import TwoColumnLayout from '../../two-column-layout';
 // @constants
 import { BASE_URL } from '../../../constants/server';
 
-// @styles
-import './style.scss';
 
 class LoginForm extends Component {
     state = {
@@ -156,23 +154,12 @@ class LoginForm extends Component {
 
         return (
             <div className="login-page">
-                <div className="login-page__left-banner">
-                    <div className="bottom-text-container">
-                        <div>"Great, kid Don"t get cocky."</div>
-                        <div className="green-text">-</div>
-                        <div>Han solo</div>
-                    </div>
-                </div>
-                <div className="login-page__form-container">
+                <TwoColumnLayout>
                     {topLinkTitle}
                     {formTitles}
-                    <div className="form-fields-container">
-                        {formFields}
-                    </div>
-                    <div className="submit-btn-container">
-                        <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
-                    </div>
-                </div>
+                    {formFields}
+                    <CustomButton onClickHandler={this.onClickSubmitBtn} text="SIGN IN" />
+                </TwoColumnLayout>
             </div>
         );
     }
