@@ -78,7 +78,7 @@ $imgPath:'/public/images/starWars.png';
 
         .sign-up-link {
             grid-area: signup-link;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .main-titles-container {
@@ -89,22 +89,20 @@ $imgPath:'/public/images/starWars.png';
             grid-area: form-fields-container;
             padding: 0 30px;
 
-            .textfield-container {
-                .MuiFormControl-marginNormal-2 {
-                    width: 100%;
-                }
+            .text-field-container {
+                width: 100%;
             }
         }
 
         .submit-btn-container {
             grid-area: submit-btn-container;
+            height: 150px;
         }
 
         .sign-up-link,
         .submit-btn-container {
             align-items: flex-start;
             display: flex;
-            height: 150px;
             justify-content: center;
         }
 
@@ -121,7 +119,7 @@ $imgPath:'/public/images/starWars.png';
 
             .title {
                 font-family: $openSans;
-                font-size: 35px;
+                font-size: 28px;
                 color: $black;
             }
 
