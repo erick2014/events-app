@@ -1,0 +1,19 @@
+.signup-page {
+    .two-layout-column {
+        &__form-container {
+            @include breakpoint(desktop){
+                grid-template-areas:
+                ". signup-link signup-link"
+                ". titles-container titles-container"
+                ". form-fields-container ."
+                ". . ."
+                ". submit-btn-container .";
+                grid-template-rows: 9fr 1fr 1fr 1fr;
+
+                .submit-btn-container {
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
