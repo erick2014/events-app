@@ -3,9 +3,6 @@ import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
 
 // styles to override in components
 import inputStyles from 'components/with.styles/input'
@@ -36,8 +33,6 @@ class SignUpForm extends Component {
             password: '',
             repeatPassword: ''
         },
-        showPassword: false,
-        showRepeatPassword: false,
         successSignUp: false
     }
 
@@ -135,12 +130,8 @@ class SignUpForm extends Component {
                 lastName,
                 password,
                 repeatPassword
-            },
-            showPassword,
-            showRepeatPassword
+            }
         } = this.state;
-
-        const { classes } = this.props;
 
         return (
             <Fragment>
@@ -148,6 +139,7 @@ class SignUpForm extends Component {
                     <TextField
                         className="text-field-container"
                         error={errFirstName.error}
+                        helperText={errFirstName.message}
                         id="firstName"
                         label="First Name"
                         margin="normal"
@@ -159,6 +151,7 @@ class SignUpForm extends Component {
                     <TextField
                         className="text-field-container"
                         error={errLastName.error}
+                        helperText={errLastName.message}
                         id="lastName"
                         label="Last name"
                         margin="normal"
@@ -166,10 +159,11 @@ class SignUpForm extends Component {
                         value={lastName}
                     />
                 </div>
-                <div className="lastname-container">
+                <div className="email-container">
                     <TextField
                         className="text-field-container"
                         error={errEmail.error}
+                        helperText={errEmail.message}
                         id="email"
                         label="Email"
                         margin="normal"
@@ -177,10 +171,11 @@ class SignUpForm extends Component {
                         value={email}
                     />
                 </div>
-                <div className="lastname-container">
+                <div className="password-container">
                     <TextField
                         className="text-field-container"
                         error={errPassword.error}
+                        helperText={errPassword.message}
                         id="password"
                         label="Password"
                         margin="normal"
@@ -188,11 +183,12 @@ class SignUpForm extends Component {
                         value={password}
                     />
                 </div>
-                <div className="lastname-container">
+                <div className="repeat-password-container">
                     <TextField
                         className="text-field-container"
                         error={errRepeatedPass.error}
-                        id="lastName"
+                        helperText={errRepeatedPass.message}
+                        id="repeatPassword"
                         label="Repeat password"
                         margin="normal"
                         onChange={event => this.handleChange('repeatPassword', event)}
