@@ -90,9 +90,9 @@ class LoginForm extends Component {
 
         return (
             <Fragment>
-                <div className="email-container textfield-container">
+                <div className="email-container">
                     <TextField
-                        className="email-field text-field-container"
+                        className="text-field-container"
                         defaultValue="Email"
                         error={error}
                         id="email"
@@ -102,8 +102,8 @@ class LoginForm extends Component {
                         value={email}
                     />
                 </div>
-                <div className="password-container textfield-container">
-                    <FormControl className="password-field" error={error} margin="normal">
+                <div className="password-container">
+                    <FormControl className="password-field text-field-container" error={error} margin="normal">
                         <InputLabel htmlFor="password">Password</InputLabel>
                         <Input
                             endAdornment={(
@@ -136,7 +136,6 @@ class LoginForm extends Component {
             return (<Redirect to="/dashboard" />);
         }
 
-        const formFields = this.renderFormFields();
         const topLinkTitle = (
             <div className="sign-up-link">
                 <Link to="/signUp">Dont have account? SIGN UP </Link>
@@ -150,6 +149,8 @@ class LoginForm extends Component {
                 {informativeMessage}
             </div>
         );
+
+        const formFields = this.renderFormFields();
 
         return (
             <div className="login-page">
