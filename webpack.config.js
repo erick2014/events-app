@@ -44,7 +44,7 @@ const config = {
                                     @import "colors";
                                     @import "reset";
                                     @import "general";
-                                    @import "mixins";
+                                    @import "mixins/mixins";
                                 `,
                                 includePaths: [
                                     path.resolve(__dirname, 'src/assets/stylesheets')
