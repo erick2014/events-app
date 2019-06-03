@@ -3,6 +3,8 @@ import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Person } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
+import ViewModule from '@material-ui/icons/ViewModule';
+import ViewStream from '@material-ui/icons/ViewStream';
 
 // @components
 import ProfileIcon from 'components/profile-icon';
@@ -83,7 +85,16 @@ class Dashboard extends PureComponent {
                 <div className="navigation-bar">
                     <ProfileIcon shortName="TM" />
                 </div>
-                <div className="menu-bar">menu</div>
+                <div className="menu-bar">
+                    <span className="menu-bar__show-title">SHOW:</span>
+                    <span className="menu-bar__events-title">ALL EVENTS</span>
+                    <span className="menu-bar__view-module">
+                        <ViewModule className="view-module-icon" />
+                    </span>
+                    <span className="menu-bar__list-module">
+                        <ViewStream className="list-module-icon" />
+                    </span>
+                </div>
                 <div className="dashboard-event-container">
                     {fakeEvents}
                 </div>

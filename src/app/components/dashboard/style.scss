@@ -1,13 +1,13 @@
 
 @mixin dashboard-event-box() {
     background-color: white;
-    box-shadow: 0 3px 3px 0px rgba(#000, 0.1);
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.11);
     font-size: 18px;
     padding: 30px;
 
     &__header {
         .time {
-            color:#CACDD0;
+            color: $event-gray;
             font-size: 14px;
         }
 
@@ -55,7 +55,7 @@
     ". navigation-bar ."
     ". menu-bar ."
     ". dashboard-event-box .";
-    grid-template-rows: 85px 85px auto;
+    grid-template-rows: 85px 50px auto;
     height: 100vh;
 
     .navigation-bar {
@@ -79,7 +79,38 @@
     }
 
     .menu-bar {
+        display: flex;
+        justify-content: center;
         grid-area: menu-bar;
+
+        &__show-title {
+            color: $dashboard-gray;
+            font-family: $hind;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 15px 0 28px;
+        }
+
+        &__events-title {
+            color: $black;
+            font-family: $hind;
+            font-size: 12px;
+            font-weight: 600;
+            padding-right: 100px;
+        }
+
+        &__view-module {
+            .view-module-icon {
+                font-size: 20px;
+            }
+        }
+
+        &__list-module {
+            .list-module-icon {
+                font-size: 20px;
+                color: $dashboard-gray;
+            }
+        }
     }
 
     .dashboard-event {
