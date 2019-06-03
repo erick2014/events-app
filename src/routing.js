@@ -11,9 +11,9 @@ const Dashboard = loadable(() => import('./app/components/dashboard'));
 const Routing = props => (
     <Fragment>
         <Route exact path="/" render={() => <Login />} />
-        <Route path="/login" render={() => <Login />} />
-        <Route path="/signup" render={() => <SignUp />} />
-        <Route path="/dashboard" render={() => <Dashboard {...props} />} />
+        <Route exact path="/login" render={() => <Login />} />
+        <Route exact path="/signup" render={() => <SignUp />} />
+        <Route exact path="/dashboard" render={() => <Dashboard {...props} />} />
     </Fragment>
 );
 
