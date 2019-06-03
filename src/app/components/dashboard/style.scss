@@ -1,0 +1,93 @@
+
+@mixin dashboard-event-box() {
+    background-color: white;
+    box-shadow: 0 3px 3px 0px rgba(#000, 0.1);
+    font-size: 18px;
+    padding: 30px;
+
+    &__header {
+        .time {
+            color:#CACDD0;
+            font-size: 14px;
+        }
+
+        .title {
+            color:#323C46;
+            font-size:22px;
+            font-weight: 500;
+            margin-top:20px;
+        }
+
+        .sub-title {
+            color:#7D7878;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+    }
+
+    &__description {
+        color: $gray-text;
+        font-size: 16px;
+    }
+
+    &__footer {
+        align-items: flex-end;
+        display: flex;
+        justify-content: space-between;
+
+        .people-counter {
+            color: $gray-text;
+            display: flex;
+            font-size: 14px;
+        }
+
+        .button-container {
+            flex-basis: 30%;
+        }
+    }
+}
+
+.dashboard-page {
+    background-color: $gray-background;
+    display: grid;
+    grid-template-columns: 10px 1fr 10px;
+    grid-template-areas:
+    ". navigation-bar ."
+    ". menu-bar ."
+    ". dashboard-event-box .";
+    grid-template-rows: 85px 85px auto;
+    height: 100vh;
+
+    .navigation-bar {
+        align-items: flex-start;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 10px;
+
+        .profile-icon {
+            @include profile-icon;
+        }
+    }
+
+    .dashboard-event-container {
+        grid-area: dashboard-event-box;
+        overflow-y: scroll;
+    }
+
+    .navigation-bar {
+        grid-area: navigation-bar;
+    }
+
+    .menu-bar {
+        grid-area: menu-bar;
+    }
+
+    .dashboard-event {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 140px 1fr 50px;
+        height: 300px;
+        margin-bottom: 20px;
+        @include dashboard-event-box();
+    }
+}
