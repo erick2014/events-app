@@ -1,7 +1,7 @@
 const path = require('path')
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCssAssets = require('optimize-css-assets-webpack-plugin')
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssets = require('optimize-css-assets-webpack-plugin');
 
 const config = {
     entry: './src/index.js',
@@ -96,12 +96,11 @@ const config = {
         inline: true// inline mode(set to false to disable including client scripts, like livereload)
     },
     devtool: 'eval-source-map'// enable devtool for better debugging experience
-}
-
-module.exports = config
+};
 
 if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins.push(
+    config.mode = 'production';
+    config.plugins.push(
         new UglifyJsPlugin({
             uglifyOptions: {
                 compress: {
@@ -114,5 +113,8 @@ if (process.env.NODE_ENV === 'production') {
             }
         }),
         new OptimizeCssAssets()
-    )
+    );
 }
+
+
+module.exports = config;
