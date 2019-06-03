@@ -99,6 +99,7 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+    delete config.devtool;
     config.mode = 'production';
     config.plugins.push(
         new UglifyJsPlugin({
