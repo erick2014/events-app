@@ -6,12 +6,14 @@ import loadable from '@loadable/component';
 // @components
 const Login = loadable(() => import('./app/components/login'));
 const SignUp = loadable(() => import('./app/components/signup'));
+const Dashboard = loadable(() => import('./app/components/dashboard'));
 
-const Routing = () => (
+const Routing = props => (
     <Fragment>
         <Route exact path="/" render={() => <Login />} />
-        <Route path="/login" render={() => <Login />} />
-        <Route path="/signup" render={() => <SignUp />} />
+        <Route exact path="/login" render={() => <Login />} />
+        <Route exact path="/signup" render={() => <SignUp />} />
+        <Route exact path="/dashboard" render={() => <Dashboard {...props} />} />
     </Fragment>
 );
 

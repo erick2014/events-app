@@ -16,7 +16,7 @@ const history = getHistory();
 const MyApp = () => (
     <Provider store={store}>
         <Router history={history}>
-            <Routing />
+            <Routing {...history} />
         </Router>
     </Provider>
 );

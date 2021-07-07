@@ -2,3 +2,5 @@
 /public/output.js
 /public/styles.css
 /public/images
+/public/*
+/public/*.output.js
